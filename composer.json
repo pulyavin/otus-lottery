@@ -1,0 +1,24 @@
+{
+    "name": "otus/lottery",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "matvey",
+            "email": "artemiy@pulyavin.ru"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "php-di/php-di": "^5.4",
+        "symfony/console": "^3.4",
+        "symfony/dom-crawler": "^3.4",
+        "symfony/css-selector": "^3.4",
+        "monolog/monolog": "^1.23"
+    },
+    "autoload": {
+        "psr-4": {
+            "Otus\\": "src"
+        }
+    }
+}

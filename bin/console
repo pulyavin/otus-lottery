@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+
+require_once(__DIR__ . '/../bootstrap/autoload.php');
+
+
+$application = $container->get(Symfony\Component\Console\Application::class);
+
+$application->add($container->get(Otus\Commands\WinnersCommand::class));
+$application->add($container->get(Otus\Commands\ObfuscatorCommand::class));
+
+$application->run();
