@@ -9,6 +9,7 @@
         }
     ],
     "require": {
+        "php": "^7.0",
         "guzzlehttp/guzzle": "^6.3",
         "php-di/php-di": "^5.4",
         "symfony/console": "^3.4",

@@ -11,6 +11,7 @@ $builder->useAutowiring(true);
 
 $builder->addDefinitions([
     'csv.path' => './users.csv',
+    'crc.path' => './crc.txt',
 
     'csv.lines' => DI\factory(function (ContainerInterface $container) {
         $csvParser = $container->get(\Otus\CsvParser::class);
@@ -29,11 +30,12 @@ $builder->addDefinitions([
 
     \Otus\SeedGenerators\SeedGeneratorInterface::class => DI\object(\Otus\SeedGenerators\HabrSeedGenerator::class),
 
-    \Otus\NumberGenerator::class => DI\factory(function (ContainerInterface $container) {
-        $seedGenerator = $container->get(\Otus\SeedGenerators\SeedGeneratorInterface::class);
-
-        return new \Otus\NumberGenerator($seedGenerator->getSeed());
-    }),
+//    \Otus\SeedGenerators\SeedGeneratorInterface::class => DI\object(\Otus\SeedGenerators\CrcSeedGenerator::class)
+//        ->constructor(
+//            DI\get('crc.path'),
+//            DI\get(\Otus\FileSystem::class),
+//            DI\get(Psr\Log\LoggerInterface::class)
+//        ),
 
     Otus\Commands\ObfuscatorCommand::class => DI\object()
         ->constructor(

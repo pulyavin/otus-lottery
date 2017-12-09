@@ -3,6 +3,7 @@
 namespace Otus\Commands;
 
 use Otus\NumberGenerator;
+use Otus\SeedGenerators\SeedGeneratorInterface;
 use Otus\User\UserRepositoryInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
@@ -23,20 +24,28 @@ class WinnersCommand extends Command
     private $numberGenerator;
 
     /**
+     * @var SeedGeneratorInterface
+     */
+    private $seedGenerator;
+
+    /**
      * WinnersCommand constructor.
      *
      * @param UserRepositoryInterface $userRepository
      * @param NumberGenerator $numberGenerator
+     * @param SeedGeneratorInterface $seedGenerator
      */
     public function __construct(
         UserRepositoryInterface $userRepository,
-        NumberGenerator $numberGenerator
+        NumberGenerator $numberGenerator,
+        SeedGeneratorInterface $seedGenerator
     )
     {
         parent::__construct();
 
         $this->userRepository = $userRepository;
         $this->numberGenerator = $numberGenerator;
+        $this->seedGenerator = $seedGenerator;
     }
 
     protected function configure()
@@ -53,7 +62,11 @@ class WinnersCommand extends Command
             $table
                 ->setHeaders(['Winners']);
 
+            $seed = $this->seedGenerator->getSeed();
+            $this->numberGenerator->setSeed($seed);
+
             $users = $this->userRepository->getUsers();
+
             $randomNumbers = $this->numberGenerator->getNumbers(\count($users), 2);
 
             $tableRows = [];

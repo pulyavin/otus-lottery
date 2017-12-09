@@ -11,11 +11,11 @@ class NumberGenerator
     private $seed;
 
     /**
-     * NumberGenerator constructor.
+     * Seed setter
      *
      * @param int $seed
      */
-    public function __construct(int $seed)
+    public function setSeed(int $seed)
     {
         $this->seed = $seed;
     }
