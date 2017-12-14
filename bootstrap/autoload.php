@@ -30,12 +30,12 @@ $builder->addDefinitions([
 
     \Otus\SeedGenerators\SeedGeneratorInterface::class => DI\object(\Otus\SeedGenerators\HabrSeedGenerator::class),
 
-//    \Otus\SeedGenerators\SeedGeneratorInterface::class => DI\object(\Otus\SeedGenerators\CrcSeedGenerator::class)
-//        ->constructor(
-//            DI\get('crc.path'),
-//            DI\get(\Otus\FileSystem::class),
-//            DI\get(Psr\Log\LoggerInterface::class)
-//        ),
+/*    \Otus\SeedGenerators\SeedGeneratorInterface::class => DI\object(\Otus\SeedGenerators\CrcSeedGenerator::class)
+        ->constructor(
+            DI\get('crc.path'),
+            DI\get(\Otus\FileSystem::class),
+            DI\get(Psr\Log\LoggerInterface::class)
+        ),*/
 
     Otus\Commands\ObfuscatorCommand::class => DI\object()
         ->constructor(
